@@ -19,10 +19,10 @@ class Main {
     private static boolean newIsOk(Position position) {
         Integer newQueen = position.get(0);
         return IntStream.range(1, position.size())
-                .allMatch(i -> {
+                .noneMatch(i -> {
                     Integer oldQueen = position.get(i);
                     int shift = Math.abs(newQueen - oldQueen);
-                    return shift != 0 && shift != i;
+                    return shift == 0 || shift == i;
                 });
     }
 
@@ -40,6 +40,6 @@ class Main {
     }
 
     public static void main(String[] args) {
-        queens(8).forEach(System.out::println);
+        queens(SIZE).forEach(System.out::println);
     }
 }
