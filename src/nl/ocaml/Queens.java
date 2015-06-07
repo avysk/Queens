@@ -32,9 +32,9 @@ class Queens {
          * @param element position of the queen in a column to add
          * @return New Position object, containing one more column on the left
          */
-        Position prepend(Integer element) {
+        Position prepend(final Integer element) {
             // we do shallow clone, so there's not so much overhead in creating a new object
-            Position newPosition = (Position) this.clone();
+            final Position newPosition = (Position) this.clone();
             newPosition.add(0, element);
             return newPosition;
         }
@@ -46,14 +46,14 @@ class Queens {
      * @param position Position to check
      * @return true if the leftmost queen is safe, false otherwise
      */
-    private static boolean lastAddedQueenIsSafe(Position position) {
-        Integer newQueen = position.get(0);
+    private static boolean lastAddedQueenIsSafe(final Position position) {
+        final Integer newQueen = position.get(0);
         // for all the columns to the right of the leftmost one
         return IntStream.range(1, position.size())
                 // check that there are non-safe queens
                 .noneMatch(i -> {
-                    Integer oldQueen = position.get(i);
-                    int shift = Math.abs(newQueen - oldQueen);
+                    final Integer oldQueen = position.get(i);
+                    final int shift = Math.abs(newQueen - oldQueen);
                     // new queen is not safe with respect to the queen which is 'i' columns away if it is either on the
                     // same row or on the same diagonal, i.e. 'i' rows away
                     return shift == 0 || shift == i;
@@ -65,7 +65,7 @@ class Queens {
      * @param position original Position
      * @return Stream of all Positions, derived from the given Position
      */
-    private static Stream<Position> addNewQueen(Position position) {
+    private static Stream<Position> addNewQueen(final Position position) {
         // New queen can be in any row from 1 to SIZE
         return IntStream.rangeClosed(1, SIZE).mapToObj(position::prepend);
     }
@@ -75,7 +75,7 @@ class Queens {
      * @param columns Number of columns to calculate positions for
      * @return Stream of all valid Positions
      */
-    private static Stream<Position> queens(int columns) {
+    private static Stream<Position> queens(final int columns) {
         // If there are no columns, there is only one possible positions -- empty
         if (columns == 0) {
             return Stream.of(new Position());
