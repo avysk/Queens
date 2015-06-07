@@ -50,7 +50,7 @@ class Queens {
         final Integer newQueen = position.get(0);
         // for all the columns to the right of the leftmost one
         return IntStream.range(1, position.size())
-                // check that there are non-safe queens
+                // check if there are non-safe queens
                 .noneMatch(i -> {
                     final Integer oldQueen = position.get(i);
                     final int shift = Math.abs(newQueen - oldQueen);
