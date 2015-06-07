@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-class Main {
+class Queens {
 
     private final static int SIZE = 8;
 
@@ -35,8 +35,8 @@ class Main {
             return Stream.of(new Position());
         }
         return queens(col - 1)
-                .flatMap(Main::addNewQueen)
-                .filter(Main::newIsOk);
+                .flatMap(Queens::addNewQueen)
+                .filter(Queens::newIsOk);
     }
 
     public static void main(String[] args) {
