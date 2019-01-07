@@ -24,7 +24,7 @@ class Queens {
      *  . . x . . . . .
      *  . . . . . x . .
      *
-     *  the Position will contain [1, 4, 8].
+     *  the Position will contain [1, 5, 8].
      */
     private static final class Position extends LinkedList<Integer> {
         /**
